@@ -481,11 +481,16 @@ class GearmanClient extends GearmanService
             $type = $task['method'];
             $jobName = $task['name'];
             $worker = $this->getJob($jobName);
+
             if (false !== $worker) {
-                $gearmanClient->$type($worker['job']['realCallableName'], serialize($type['params']), $type['context'], $type['unique']);
+
+                $gearmanClient->$type($worker['job']['realCallableName'], serialize($task['params']), $task['context'], $task['unique']);
             }
         }
 
         return $gearmanClient->runTasks();
     }
+
+
+
 }
