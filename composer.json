@@ -23,5 +23,5 @@
     "autoload": {
         "psr-0": { "Mmoreramerino\\GearmanBundle": "Mmoreramerino/GearmanBundle/lib/" }
     },
-    "target-dir": "Mmoreramerino/GearmanBundle"
+    "target-dir": ""
 }
