@@ -431,4 +431,14 @@ class GearmanClient extends GearmanService
 
         return $this->gearman->runTasks();
     }
+
+    /**
+     * Simple wrapper over {@link \GearmanClient::ping()}
+     *
+     * @return bool
+     */
+    public function ping()
+    {
+        return $this->gearman->ping();
+    }
 }
