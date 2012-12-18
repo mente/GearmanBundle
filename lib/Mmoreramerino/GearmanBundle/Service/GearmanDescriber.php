@@ -27,12 +27,12 @@ class GearmanDescriber extends ContainerAware
         $script = $this->container->get('kernel')->getRootDir() . '/console gearman:job:execute';
 
         $this->describeWorker($output, $worker);
-        $job = $worker['job'];
-        $output->writeln('<info>    @job\methodName : '.$job['methodName'].'</info>');
-        $output->writeln('<info>    @job\callableName : '.$job['realCallableName'].'</info>');
-        $output->writeln('<info>    @job\supervisord : </info><comment>/usr/bin/php '.$script.' '.$job['realCallableName'].' --no-interaction</comment>');
-        $output->writeln('<info>    @job\iterations : '.$job['iterations'].'</info>');
-        $output->writeln('<info>    @job\defaultMethod : '.$job['defaultMethod'].'</info>');
+        $job = $worker->getJob();
+        $output->writeln('<info>    @job\methodName : '.$job->getMethodName().'</info>');
+        $output->writeln('<info>    @job\callableName : '.$job->getRealCallableName().'</info>');
+        $output->writeln('<info>    @job\supervisord : </info><comment>/usr/bin/php '.$script.' '.$job->getRealCallableName().' --no-interaction</comment>');
+        $output->writeln('<info>    @job\iterations : '.$job->getIterations().'</info>');
+        $output->writeln('<info>    @job\defaultMethod : '.$job->getDefaultMethod().'</info>');
         $output->writeln('<info>    @job\servers :</info>');
         $output->writeln('');
         foreach ($job['servers'] as $name => $server) {
@@ -41,7 +41,7 @@ class GearmanDescriber extends ContainerAware
         $output->writeln('');
         $output->writeln('<info>    @job\description :</info>');
         $output->writeln('');
-        $output->writeln('<comment>        # '.$job['description'].'</comment>');
+        $output->writeln('<comment>        # '.$job->getDescription().'</comment>');
         $output->writeln('');
     }
 
