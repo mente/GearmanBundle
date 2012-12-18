@@ -35,7 +35,7 @@ class GearmanDescriber extends ContainerAware
         $output->writeln('<info>    @job\defaultMethod : '.$job->getDefaultMethod().'</info>');
         $output->writeln('<info>    @job\servers :</info>');
         $output->writeln('');
-        foreach ($job['servers'] as $name => $server) {
+        foreach ($job->getServers() as $name => $server) {
             $output->writeln('<comment>        '.$name.' - '.$server.'</comment>');
         }
         $output->writeln('');
